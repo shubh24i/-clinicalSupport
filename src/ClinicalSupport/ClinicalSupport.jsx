@@ -13,7 +13,9 @@ const ClinicalSupport = ({ children }) => {
     };
   };
 
-  console.log('data...fields',fields?.length>0)
+  const orderByFields = fields?.sort((a,b)=>{
+    return a.order-b.order;
+  })
   return (
     <>
       <h1>Upload Json file - Example</h1>
@@ -23,10 +25,10 @@ const ClinicalSupport = ({ children }) => {
       <div className="form">
         <form>
         <ul className="formWrap">
-          {fields?.length>0 ? fields?.map(item => {
+          {orderByFields?.length>0 ? orderByFields?.map(item => {
             return <FormItem {...item} key={item?.key} />
           }):'No Data'}
-          {fields?.length>0 && <li><span></span><button className="btn" type="submit">Submit</button></li>}
+          {orderByFields?.length>0 && <li><span></span><button className="btn" type="submit">Submit</button></li>}
 
         </ul>
         </form>
