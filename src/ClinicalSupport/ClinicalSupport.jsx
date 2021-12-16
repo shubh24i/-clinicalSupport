@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './clinical.css';
 
-const ClinicalSupport = ({ children }) => {
+const ClinicalSupport = (props) => {
 
   const [fields, setFields] = useState([]);
   const handleChange = e => {
@@ -46,12 +46,12 @@ const FormItem = (props) => {
   );
 }
 
-const Input = ({ label, key, isRequired, isReadonly, type }) => {
-  return (<input type={type} name={label} readOnly={isReadonly} required={isRequired} />)
+const Input = ({ label, isRequired, isReadonly, type }) => {
+  return (<input type={type} name={label} disabled={isReadonly} required={isRequired} />)
 }
 
-const Select = ({ label, items, key, isRequired, order, isReadonly, type }) => {
-  return (<select className={label} name={label} required={isRequired}>
+const Select = ({ label, items, key, isRequired, isReadonly }) => {
+  return (<select className={label} name={label} disabled={isReadonly} required={isRequired}>
     {items?.map(({ value, text }) => <option key={`select${key}`} value={value}>{text}</option>)}
   </select>)
 }
